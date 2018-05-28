@@ -2,7 +2,7 @@ import gym
 import sys
 from gym.utils import play as p
 import numpy as np
-from pygit2 import Repository
+#from pygit2 import Repository
 import pandas as pd
 import datetime 
 import pickle
@@ -15,11 +15,11 @@ import pickle
 
 # Adjust game characteristics here
 # frames per second, 30 is the default
-fps_rate = 10
+fps_rate = 30
 # game name, prolly nvr gonna change this
 game_name = 'SpaceInvaders-v0'
 # gets branch name.
-head = Repository('.').head.shorthand
+# head = Repository('.').head.shorthand
 # Folder to dump in
 filePath = './human_play/'
 
@@ -39,7 +39,7 @@ class PlayGame(object):
         env = gym.make(game_name)
         p.play(env, zoom = 2, fps = fps_rate, callback = self.callbackFunction)
         now = datetime.datetime.now()
-        filename = filePath + head + "_Score_" + str(int(self.score)) + ".data"
+        filename = filePath + 'sunash' + "_Score_" + str(int(self.score)) + ".data"
         f = open(filename, "wb")
         pickle.dump(self.game_data, f)
         f.close()
